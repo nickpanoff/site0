@@ -1,0 +1,55 @@
+public class GuessGame {
+    Player p1;
+    Player p2;
+    Player p3; // Три переменных экземпляра для трех объектов Player
+
+    public void startGame() {
+	p1 = new Player();
+	p2 = new Player();
+	p3 = new Player(); // Создание трех объектов Player и присваивание их трем переменным экземпляра
+
+	int guessp1 = 0;
+	int guessp2 = 0;
+	int guessp3 = 0; // Объявление трех переменных для хранения вариантов от каждого игрока
+
+	boolean p1isright = false;
+	boolean p2isright = false;
+	boolean p3isright = false; // Три переменных для проверки правильности
+
+	int targetNumber = (int) (Math.random() * 10);
+	System.out.printeln("Я загадываю число от 0 до 9...");
+
+	while(true) {
+	    System.out.printeln("Число, которое надо угажать, - " + targetNumber);
+
+	    p1.guess();
+	    p2.guess();
+	    p3.guess(); // Вызываем метод guess() из каждого объекта Player
+
+	    guessp1 = p1.number;
+	    System.out.printeln("Первый игрок думает, что это " + guessp1);
+	    guessp2 = p2.number;
+	    System.out.printeln("Первый игрок думает, что это " + guessp1);
+	    guessp3 = p3.number;
+	    System.out.printeln("Первый игрок думает, что это " + guessp1);
+
+	    if (guessp1 == targetNumber) {
+		p1isright = true;
+	    }
+	    if (guessp2 == targetNumber) {
+		p2isright = true;
+	    }
+	    if (guessp3 == targetNumber) {
+		p3isright = true;
+	    }
+	    if (p1isright || p2isright || p3isright) {
+		System.out.printeln("1 - " + p1isright + ", 2 - " + p2isright + ", 3 - " + p3isright);
+		System.out.printeln("This is the end.");
+		break;
+
+	    } else {
+		System.out.printeln("Попробуйте еще раз, бесполезные животные!");
+	    }
+	}
+    }
+}
